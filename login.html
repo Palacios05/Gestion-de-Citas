@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingreso de Barbero</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo">Barbería - Panel de Barberos</div>
+  </header>
+
+  <main class="login-section">
+    <h2>Iniciar Sesión</h2>
+
+    <form id="loginForm">
+      <input type="text" id="usuario" placeholder="Usuario" required>
+      <input type="password" id="password" placeholder="Contraseña" required>
+      <button type="submit" class="btn-primary">Ingresar</button>
+    </form>
+
+    <p class="login-hint">Solo para uso interno de barberos</p>
+
+    <div class="volver-cliente">
+      <p>¿Eres cliente?</p>
+      <a href="index.html" class="btn-secondary">Ir a reservar una cita</a>
+    </div>
+  </main>
+
+  <script>
+    const usuarios = {
+      "jjpalacios": {
+        password: "1234",
+        nombreBarbero: "Juan Jose Palacios"
+      },
+      "jpgiraldo": {
+        password: "1234",
+        nombreBarbero: "Juan Pablo Giraldo"
+      },
+      "dpalacios": {
+        password: "1234",
+        nombreBarbero: "Diego Palacios"
+      }
+    };
+
+    const form = document.getElementById("loginForm");
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+
+      const usuario = form.usuario.value.trim().toLowerCase();
+      const pass = form.password.value.trim();
+
+      if (!usuarios[usuario]) {
+        alert("Usuario no encontrado.");
+        return;
+      }
+
+      if (usuarios[usuario].password !== pass) {
+        alert("Contraseña incorrecta.");
+        return;
+      }
+
+      localStorage.setItem("barberoActivo", usuarios[usuario].nombreBarbero);
+
+      window.location.href = "barbero.html";
+    });
+  </script>
+</body>
+</html>

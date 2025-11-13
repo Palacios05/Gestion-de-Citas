@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel del Barbero</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">BARBERÍA - Panel</div>
+    <nav>
+      <ul>
+        <li><button id="logoutBtn" class="btn-logout">Cerrar sesión</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="admin-section">
+    <h2 id="tituloBarbero">Citas</h2>
+
+    <div id="citasList" class="citas-list"></div>
+
+    <button id="exportarBtn" class="btn-primary" style="margin-top: 20px;">
+      Exportar citas en CSV
+    </button>
+  </main>
+
+  <script src="panel-barbero.js"></script>
+</body>
+</html>
