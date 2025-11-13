@@ -1,5 +1,11 @@
 # 📄 README -- Sistema de Gestión de Citas para Barbería
 
+## ✂️ Desarrolladores
+
+-   Juan Jose Palacios Giraldo.
+-   Diego Armando Palacios Cruz.
+-   Juan Pablo Giraldo Mosquera.
+  
 ## ✂️ Descripción del Proyecto
 
 Este sistema web permite a una barbería gestionar citas de forma
