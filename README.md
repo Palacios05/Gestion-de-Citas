@@ -50,23 +50,6 @@ Es un proyecto 100% frontend, ligero y simple de desplegar.
         ├── barberia-salon.jpeg
         └── icono_barber.png
 
-## 👥 Distribución del Trabajo (3 Desarrolladores)
-
-### Persona 1 -- Módulo Cliente
-
--   index.html
--   script.js
-
-### Persona 2 -- Login + Panel del Barbero
-
--   login.html
--   barbero.html
--   panel-barbero.js
-
-### Persona 3 -- Estilos globales
-
--   styles.css
-
 ## 💽 Tecnologías Usadas
 
 -   HTML5
