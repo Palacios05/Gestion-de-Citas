@@ -1,10 +1,20 @@
 # ✂️ Sistema de Gestión de Citas para Barbería
 ## Proyecto Full Stack con Node.js, Express, MySQL y Frontend Moderno
 
+<<<<<<< HEAD
 ### 👨‍💻 Desarrolladores
 - **Juan José Palacios Giraldo**  
 - **Diego Armando Palacios Cruz**  
 - **Juan Pablo Giraldo Mosquera**
+=======
+## ✂️ Desarrolladores
+
+-   Juan Jose Palacios Giraldo.
+-   Diego Armando Palacios Cruz.
+-   Juan Pablo Giraldo Mosquera.
+  
+## ✂️ Descripción del Proyecto
+>>>>>>> 69773d5c64603c9de940b0683032c2167e45236b
 
 ---
 
