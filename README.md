@@ -1,40 +1,30 @@
 # ✂️ Sistema de Gestión de Citas para Barbería
 ## Proyecto Full Stack con Node.js, Express, MySQL y Frontend Moderno
 
-<<<<<<< HEAD
 ### 👨‍💻 Desarrolladores
 - **Juan José Palacios Giraldo**  
 - **Diego Armando Palacios Cruz**  
 - **Juan Pablo Giraldo Mosquera**
-=======
-## ✂️ Desarrolladores
-
--   Juan Jose Palacios Giraldo.
--   Diego Armando Palacios Cruz.
--   Juan Pablo Giraldo Mosquera.
-  
-## ✂️ Descripción del Proyecto
->>>>>>> 69773d5c64603c9de940b0683032c2167e45236b
 
 ---
 
 ## 📌 Descripción del Proyecto
 
-Este proyecto implementa un **sistema completo de gestión de citas para una barbería**, con arquitectura **full-stack**, donde:
+Sistema completo para administrar citas en una barbería, con:
 
-### 👤 Los clientes pueden:
-- Reservar una cita eligiendo barbero, fecha, servicio y hora.
-- Visualizar únicamente los horarios disponibles.
-- Recibir correo de confirmación mediante **EmailJS**.
-- Disfrutar de una interfaz moderna y animada.
+### 👤 Vista Cliente
+- Reservar citas con fecha, hora, barbero y servicio.  
+- Validar disponibilidad real.  
+- Bloqueo de horarios pasados u ocupados.  
+- Envío de correo automático (EmailJS).  
+- Interfaz moderna con animaciones.
 
-### 💈 Los barberos pueden:
-- Iniciar sesión con credenciales validadas desde MySQL.
-- Ver sus citas clasificadas **por día**.
-- Ver formato de fecha amigable:  
-  *miércoles 19 de noviembre de 2025*
-- Eliminar citas.
-- Exportar agenda a CSV.
+### 💈 Vista Barbero
+- Login conectado a MySQL.  
+- Visualización de citas **agrupadas por día**.  
+- Fechas formateadas de forma amigable (ej: “miércoles 19 de noviembre de 2025”).  
+- Eliminar citas.  
+- Exportar citas a CSV.  
 - Cerrar sesión.
 
 ### 🖥️ Backend API
@@ -42,39 +32,11 @@ Este proyecto implementa un **sistema completo de gestión de citas para una bar
 - Express  
 - MySQL  
 - CORS  
-- CRUD completo: GET, POST, PUT, DELETE  
+- CRUD: GET, POST, DELETE  
 
 ---
 
-## 🚀 Funcionalidades Principales
-
-### ⭐ Módulo Cliente
-- Selección precisa del barbero mediante su **usuario**.
-- Validación completa de fechas y horarios.
-- Bloqueo de horas pasadas y ocupadas.
-- Envío de correos automáticos.
-- Diseño moderno.
-
-### ⭐ Módulo Barbero
-- Login conectado al backend.
-- Filtrado automático por barbero.
-- Agrupación por día.
-- Eliminación de citas.
-- Exportación CSV.
-
-### ⭐ Backend
-Rutas principales:
-
-| Método | Ruta | Función |
-|--------|------|---------|
-| GET | `/api/citas` | Obtener citas |
-| POST | `/api/citas` | Crear cita |
-| DELETE | `/api/citas/:id` | Eliminar cita |
-| POST | `/api/auth/login` | Login de barbero |
-
----
-
-## 📁 Estructura del Proyecto
+# 📁 Estructura del Proyecto
 
 ```
 /proyecto-barberia
@@ -102,55 +64,105 @@ Rutas principales:
 
 ---
 
-## 💽 Tecnologías Usadas
+# 🛠️ Instalación y Ejecución
 
-### Frontend
-- HTML5  
-- CSS3  
-- JavaScript  
-- EmailJS  
-- FontAwesome  
+## 1️⃣ Instalar dependencias
+Desde el folder **backend/**:
 
-### Backend
-- Node.js  
-- Express  
-- MySQL2  
-- Dotenv  
-- CORS  
+```bash
+npm install
+```
 
 ---
 
-## 🔧 Instalación y Ejecución
+## 2️⃣ Crear archivo `.env`
 
-### 1️⃣ Clonar repo
-```bash
-git clone https://github.com/tu-usuario/proyecto-barberia.git
-```
-
-### 2️⃣ Backend
-```bash
-cd backend
-npm install
-node src/app.js
-```
-
-Archivo `.env`:
+Ubicación: **backend/.env**
 
 ```
 PORT=4000
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=barberia
+DB_PASSWORD=tu_contraseña_mysql
 DB_NAME=barberia
 DB_PORT=3306
 ```
 
-### 3️⃣ EmailJS
-Insertar credenciales en `script.js`.
+---
+
+# 🛢️ Script de la Base de Datos MySQL
+
+Ejecutar en MySQL Workbench, CLI o phpMyAdmin:
+
+```sql
+CREATE DATABASE IF NOT EXISTS barberia;
+USE barberia;
+
+CREATE TABLE barberos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    usuario VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL
+);
+
+INSERT INTO barberos (nombre, usuario, password) VALUES
+('Juan José Palacios', 'jjpalacios', '1234'),
+('Juan Pablo Giraldo', 'jpgiraldo', '1234'),
+('Diego Palacios', 'dpalacios', '1234');
+
+CREATE TABLE citas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    barbero VARCHAR(50) NOT NULL,
+    servicio VARCHAR(100) NOT NULL,
+    fecha DATE NOT NULL,
+    hora TIME NOT NULL
+);
+```
 
 ---
 
-## 🔑 Credenciales de prueba
+# ▶️ 3️⃣ Levantar el Backend
+
+```bash
+node src/app.js
+```
+
+Si todo está bien:
+
+```
+Servidor corriendo en puerto 4000
+Conectado a MySQL
+```
+
+---
+
+# 🌐 4️⃣ Ejecutar el Frontend
+
+Abrir en el navegador:
+
+```
+frontend/index.html
+```
+
+---
+
+# 📧 5️⃣ Configurar EmailJS
+
+En `frontend/js/script.js`:
+
+```js
+emailjs.init("TU_PUBLIC_KEY");
+emailjs.send("TU_SERVICE_ID", "TU_TEMPLATE_ID", templateParams);
+```
+
+Credenciales desde:  
+🔗 https://dashboard.emailjs.com/
+
+---
+
+# 🔑 Credenciales de prueba
 
 | Usuario | Contraseña | Barbero |
 |--------|------------|---------|
@@ -160,13 +172,34 @@ Insertar credenciales en `script.js`.
 
 ---
 
-## 🌱 Mejoras Futuras
-- JWT Authentication  
-- Dashboard administrativo  
-- Recordatorios WhatsApp  
-- Citas recurrentes  
+# 🧪 6️⃣ Probar la API Manualmente
+
+### Obtener todas las citas:
+```
+GET http://localhost:4000/api/citas
+```
+
+### Crear una cita:
+```
+POST http://localhost:4000/api/citas
+Content-Type: application/json
+
+{
+  "nombre": "Carlos",
+  "email": "carlos@mail.com",
+  "barbero": "jjpalacios",
+  "servicio": "Corte de cabello",
+  "fecha": "2025-11-20",
+  "hora": "15:00"
+}
+```
+
+### Eliminar cita:
+```
+DELETE http://localhost:4000/api/citas/3
+```
 
 ---
 
-## 📜 Licencia
-Uso libre educativo.
+# 📜 Licencia
+Uso libre con fines educativos.
