@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Barbero</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="login-section">
+    <h2>Panel de barberos</h2>
+    <form id="loginForm">
+      <input type="text" id="usuario" placeholder="Usuario" required>
+      <input type="password" id="password" placeholder="Contraseña" required>
+      <button type="submit" class="btn-primary">Ingresar</button>
+    </form>
+    <div class="login-hint">Solo para barberos registrados.</div>
+    <div class="volver-cliente">
+      <p>¿Eres cliente?</p>
+      <a href="index.html">Ir a reservar una cita</a>
+    </div>
+  </main>
+
+  <script>
+    const API_AUTH = "http://localhost:4000/api/auth/login";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("loginForm");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const usuario = document.getElementById("usuario").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        if (!usuario || !password) {
+          alert("Ingresa usuario y contraseña");
+          return;
+        }
+
+        try {
+          const res = await fetch(API_AUTH, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ usuario, password })
+          });
+
+          if (!res.ok) {
+            alert("Usuario o contraseña incorrectos");
+            return;
+          }
+
+          const barbero = await res.json();
+          localStorage.setItem("barbero_actual", JSON.stringify(barbero));
+          window.location.href = "barbero.html";
+        } catch (err) {
+          console.error(err);
+          alert("Error al iniciar sesión.");
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,95 +1,162 @@
-# 📄 README -- Sistema de Gestión de Citas para Barbería
+# ✂️ Sistema de Gestión de Citas para Barbería
+## Proyecto Full Stack con Node.js, Express, MySQL y Frontend Moderno
 
-## ✂️ Descripción del Proyecto
+### 👨‍💻 Desarrolladores
+- **Juan José Palacios Giraldo**  
+- **Diego Armando Palacios Cruz**  
+- **Juan Pablo Giraldo Mosquera**
 
-Este sistema web permite a una barbería gestionar citas de forma
-eficiente. Incluye:
+---
 
--   Vista cliente para reservar citas.
--   Panel del barbero con login interno, listado de citas, eliminación y
-    exportación CSV.
--   Sistema de correos automáticos usando EmailJS.
--   Persistencia local mediante LocalStorage.
+## 📌 Descripción del Proyecto
 
-Es un proyecto 100% frontend, ligero y simple de desplegar.
+Este proyecto implementa un **sistema completo de gestión de citas para una barbería**, con arquitectura **full-stack**, donde:
 
-## 🚀 Características Principales
+### 👤 Los clientes pueden:
+- Reservar una cita eligiendo barbero, fecha, servicio y hora.
+- Visualizar únicamente los horarios disponibles.
+- Recibir correo de confirmación mediante **EmailJS**.
+- Disfrutar de una interfaz moderna y animada.
 
-### Módulo Cliente
+### 💈 Los barberos pueden:
+- Iniciar sesión con credenciales validadas desde MySQL.
+- Ver sus citas clasificadas **por día**.
+- Ver formato de fecha amigable:  
+  *miércoles 19 de noviembre de 2025*
+- Eliminar citas.
+- Exportar agenda a CSV.
+- Cerrar sesión.
 
--   Reservas con validación de fecha, hora y barbero asignado.
--   Horarios generados automáticamente según disponibilidad.
--   Bloqueo de horas ocupadas o pasadas.
--   Envío de correo de confirmación.
--   Interfaz moderna con animaciones.
+### 🖥️ Backend API
+- Node.js  
+- Express  
+- MySQL  
+- CORS  
+- CRUD completo: GET, POST, PUT, DELETE  
 
-### Módulo Barbero
+---
 
--   Inicio de sesión para cada barbero.
--   Visualización de citas ordenadas por fecha y hora.
--   Eliminación de citas.
--   Exportación en CSV.
--   Cierre de sesión seguro.
+## 🚀 Funcionalidades Principales
+
+### ⭐ Módulo Cliente
+- Selección precisa del barbero mediante su **usuario**.
+- Validación completa de fechas y horarios.
+- Bloqueo de horas pasadas y ocupadas.
+- Envío de correos automáticos.
+- Diseño moderno.
+
+### ⭐ Módulo Barbero
+- Login conectado al backend.
+- Filtrado automático por barbero.
+- Agrupación por día.
+- Eliminación de citas.
+- Exportación CSV.
+
+### ⭐ Backend
+Rutas principales:
+
+| Método | Ruta | Función |
+|--------|------|---------|
+| GET | `/api/citas` | Obtener citas |
+| POST | `/api/citas` | Crear cita |
+| DELETE | `/api/citas/:id` | Eliminar cita |
+| POST | `/api/auth/login` | Login de barbero |
+
+---
 
 ## 📁 Estructura del Proyecto
 
-    /proyecto-barberia
-    │
-    ├── index.html
-    ├── login.html
-    ├── barbero.html
-    │
-    ├── css/
-    │   └── styles.css
-    │
-    ├── js/
-    │   ├── script.js
-    │   └── panel-barbero.js
-    │
-    └── img/
-        ├── barberia-salon.jpeg
-        └── icono_barber.png
+```
+/proyecto-barberia
+│
+├── backend/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── routes/
+│   │   ├── database.js
+│   │   ├── app.js
+│   │   └── models/
+│   ├── package.json
+│   └── .env
+│
+├── frontend/
+│   ├── index.html
+│   ├── login.html
+│   ├── barbero.html
+│   ├── css/
+│   ├── js/
+│   └── img/
+│
+└── README.md
+```
+
+---
 
 ## 💽 Tecnologías Usadas
 
--   HTML5
--   CSS3
--   JavaScript
--   LocalStorage
--   EmailJS
--   FontAwesome
+### Frontend
+- HTML5  
+- CSS3  
+- JavaScript  
+- EmailJS  
+- FontAwesome  
 
-## 🔧 Cómo ejecutar el proyecto
+### Backend
+- Node.js  
+- Express  
+- MySQL2  
+- Dotenv  
+- CORS  
 
-### 1. Clonar el repositorio
+---
 
-    git clone https://github.com/tu-usuario/proyecto-barberia.git
+## 🔧 Instalación y Ejecución
 
-### 2. Abrir el proyecto
+### 1️⃣ Clonar repo
+```bash
+git clone https://github.com/tu-usuario/proyecto-barberia.git
+```
 
-Abrir `index.html` en el navegador.
+### 2️⃣ Backend
+```bash
+cd backend
+npm install
+node src/app.js
+```
 
-### 3. Configurar EmailJS
+Archivo `.env`:
 
-1.  Crear cuenta en https://www.emailjs.com/
-2.  Obtener Service ID, Template ID y Public Key
-3.  Reemplazarlos en `script.js`
+```
+PORT=4000
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=barberia
+DB_NAME=barberia
+DB_PORT=3306
+```
+
+### 3️⃣ EmailJS
+Insertar credenciales en `script.js`.
+
+---
 
 ## 🔑 Credenciales de prueba
 
-| Usuario    | Contraseña | Barbero              |
-|------------|------------|----------------------|
-| jjpalacios | 1234       | Juan Jose Palacios   |
-| jpgiraldo  | 1234       | Juan Pablo Giraldo   |
-| dpalacios  | 1234       | Diego Palacios       |
+| Usuario | Contraseña | Barbero |
+|--------|------------|---------|
+| jjpalacios | 1234 | Juan José Palacios |
+| jpgiraldo | 1234 | Juan Pablo Giraldo |
+| dpalacios | 1234 | Diego Palacios |
+
+---
 
 ## 🌱 Mejoras Futuras
+- JWT Authentication  
+- Dashboard administrativo  
+- Recordatorios WhatsApp  
+- Citas recurrentes  
 
--   Migrar LocalStorage a base de datos real.
--   Calendario visual interactivo.
--   Panel administrativo completo.
--   Notificaciones SMS o WhatsApp.
+---
 
 ## 📜 Licencia
-
 Uso libre educativo.
